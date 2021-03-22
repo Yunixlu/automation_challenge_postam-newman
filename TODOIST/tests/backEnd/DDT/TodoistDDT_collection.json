@@ -1,0 +1,184 @@
+{
+	"info": {
+		"_postman_id": "ab847f6b-bc62-4b27-8b58-9368d60eacba",
+		"name": "Todoist DDT",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "PROJECT",
+			"item": [
+				{
+					"name": "Create tasks",
+					"item": [
+						{
+							"name": "Create new tasks",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "5137507c-e33c-4a2c-8130-f11aa0410e2e",
+										"exec": [
+											"var jsonData = pm.response.json();",
+											"var name = pm.variables.get(\"taskNameDDT\")",
+											"pm.environment.set(\"taskId\", jsonData.id);",
+											"var creator = parseInt(pm.environment.get(\"creator\"))",
+											"var schema = JSON.parse(pm.environment.get(\"taskSchema\"))",
+											"",
+											"pm.test(\"Task name is correct\", function(){",
+											"    pm.expect(jsonData.content).to.eql(name);",
+											"});",
+											"",
+											"pm.test(\"Validate Task Id\", function(){",
+											"    pm.expect(jsonData.id).to.be.eql(pm.environment.get(\"taskId\"))",
+											"})",
+											"",
+											"pm.test(\"Body response to be Json\", function(){",
+											"    pm.response.to.be.json;",
+											"});",
+											"",
+											"pm.test(\"Schema is valid\", function(){",
+											"    pm.response.to.have.jsonSchema(schema);",
+											"});",
+											"",
+											"pm.test(\"Response time is less than 600ms\", function () {",
+											"    pm.expect(pm.response.responseTime).to.be.below(600);",
+											"});",
+											"",
+											"pm.test(\"Content-Type is present\", function () {",
+											"    pm.response.to.have.header(\"Content-Type\");",
+											"});",
+											"",
+											"pm.test(\"Validate creator\", function(){",
+											"    pm.expect(jsonData.creator).to.be.eql(creator);",
+											"});",
+											"",
+											"pm.test(\"Validate creator be a number\", function(){",
+											"    pm.expect(jsonData.creator).to.be.a(\"number\");",
+											"});",
+											"",
+											"pm.test(\"Validate project id\", function(){",
+											"    pm.expect(jsonData.project_id).to.be.eql(2261125936);",
+											"});",
+											"",
+											"pm.test(\"Validate id be a number\", function(){",
+											"    pm.expect(jsonData.id).to.be.a(\"number\");",
+											"});",
+											"",
+											"pm.test(\"Validate content be a string\",function(){",
+											"    pm.expect(jsonData.content).to.be.a(\"string\");",
+											"});",
+											"",
+											"pm.test(\"Label_ids array is empty\", function(){",
+											"    pm.expect(jsonData.label_ids).to.be.empty;",
+											"})",
+											"",
+											"//Negative scenarios",
+											"",
+											"pm.test(\"Validate text is present \", function(){",
+											"    pm.expect(pm.response.text()).to.deep.include(\"Haz clic en esta tarea para ver más detalles\");",
+											"});",
+											"",
+											"pm.test(\"There is no response body\", function () {",
+											"    var res = (_.isEmpty(responseBody));",
+											"    pm.expect(res).to.be.true",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "X-Requested-Id",
+										"type": "text",
+										"value": "$(uuidgen)"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"content\": \"{{taskNameDDT}}\"\n}"
+								},
+								"url": {
+									"raw": "{{baseURL}}",
+									"host": [
+										"{{baseURL}}"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "725b3379-64ff-4e55-a57a-12b286595764",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "efdffa4d-e0a1-4b5d-bbc0-7721b5f2f54a",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "affd2cb1a58b301b7fb57612eb92a4f514d4f2c6",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "2c9f5569-1325-44ac-93f4-cf39118ee164",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "bc8a95e3-29bd-4f4e-85a9-72bdad5ea83b",
+				"type": "text/javascript",
+				"exec": [
+					"pm.test(\"Status code is 2xx\", function () {",
+					"    pm.response.to.be.success;",
+					"});"
+				]
+			}
+		}
+	],
+	"protocolProfileBehavior": {}
+}

@@ -1,0 +1,580 @@
+{
+	"info": {
+		"_postman_id": "b0bfdf5b-035f-45db-bcb1-653b759d3041",
+		"name": "Todoist",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "PROJECT",
+			"item": [
+				{
+					"name": "Get task",
+					"item": [
+						{
+							"name": "Get active tasks",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "f8506f9c-497e-4b0c-8995-b03223dae3b2",
+										"exec": [
+											"var jsonData = pm.response.json();",
+											"var name = pm.environment.get(\"taskName\")",
+											"var creator = parseInt(pm.environment.get(\"creator\"))",
+											"var schema = JSON.parse(pm.environment.get(\"taskSchema\"))",
+											"",
+											"pm.test(\"Body response to be Json\", function(){",
+											"    pm.response.to.be.json;",
+											"});",
+											"",
+											"pm.test(\"Response time is less than 400ms\", function () {",
+											"    pm.expect(pm.response.responseTime).to.be.below(400);",
+											"});",
+											"",
+											"pm.test(\"Content-Type is present\", function () {",
+											"    pm.response.to.have.header(\"Content-Type\");",
+											"});",
+											"",
+											"pm.test(\"Validate text is present \", function(){",
+											"    pm.expect(pm.response.text()).to.deep.include(\"Haz clic en esta tarea para ver más detalles\");",
+											"});",
+											"",
+											"pm.test(\"Validate creator\", function(){",
+											"    pm.expect(jsonData[0].creator).to.be.eql(creator);",
+											"});",
+											"",
+											"pm.test(\"Validate creator be a number\", function(){",
+											"    pm.expect(jsonData[0].creator).to.be.a(\"number\");",
+											"});",
+											"",
+											"pm.test(\"Schema is valid\", function(){",
+											"    pm.response.to.have.jsonSchema(schema);",
+											"});",
+											"",
+											"//Negative scenarios",
+											"pm.test(\"Task name is correct\", function(){",
+											"    pm.expect(jsonData[0].content).to.eql(name);",
+											"});",
+											"",
+											"pm.test(\"There is no response body\", function () {",
+											"    var res = (_.isEmpty(responseBody));",
+											"    pm.expect(res).to.be.true",
+											"});",
+											"",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseURL}}",
+									"host": [
+										"{{baseURL}}"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Create task",
+					"item": [
+						{
+							"name": "Create a new task",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "edbbc7e3-a4f6-41b3-9ab4-1a97f42a0528",
+										"exec": [
+											"var jsonData = pm.response.json();",
+											"var name = pm.environment.get(\"taskName\")",
+											"pm.environment.set(\"taskId\", jsonData.id);",
+											"var creator = parseInt(pm.environment.get(\"creator\"))",
+											"var schema = JSON.parse(pm.environment.get(\"taskSchema\"))",
+											"",
+											"pm.test(\"Task name is correct\", function(){",
+											"    pm.expect(jsonData.content).to.eql(name);",
+											"});",
+											"",
+											"pm.test(\"Validate Task Id\", function(){",
+											"    pm.expect(jsonData.id).to.be.eql(pm.environment.get(\"taskId\"))",
+											"})",
+											"",
+											"pm.test(\"Body response to be Json\", function(){",
+											"    pm.response.to.be.json;",
+											"});",
+											"",
+											"pm.test(\"Schema is valid\", function(){",
+											"    pm.response.to.have.jsonSchema(schema);",
+											"});",
+											"",
+											"pm.test(\"Response time is less than 600ms\", function () {",
+											"    pm.expect(pm.response.responseTime).to.be.below(600);",
+											"});",
+											"",
+											"pm.test(\"Content-Type is present\", function () {",
+											"    pm.response.to.have.header(\"Content-Type\");",
+											"});",
+											"",
+											"pm.test(\"Validate creator\", function(){",
+											"    pm.expect(jsonData.creator).to.be.eql(creator);",
+											"});",
+											"",
+											"pm.test(\"Validate creator be a number\", function(){",
+											"    pm.expect(jsonData.creator).to.be.a(\"number\");",
+											"});",
+											"",
+											"pm.test(\"Validate project id\", function(){",
+											"    pm.expect(jsonData.project_id).to.be.eql(2261125936);",
+											"});",
+											"",
+											"pm.test(\"Validate id be a number\", function(){",
+											"    pm.expect(jsonData.id).to.be.a(\"number\");",
+											"});",
+											"",
+											"pm.test(\"Validate content be a string\",function(){",
+											"    pm.expect(jsonData.content).to.be.a(\"string\");",
+											"});",
+											"",
+											"pm.test(\"Label_ids array is empty\", function(){",
+											"    pm.expect(jsonData.label_ids).to.be.empty;",
+											"})",
+											"",
+											"//Negative scenarios",
+											"",
+											"pm.test(\"Validate text is present \", function(){",
+											"    pm.expect(pm.response.text()).to.deep.include(\"Haz clic en esta tarea para ver más detalles\");",
+											"});",
+											"",
+											"pm.test(\"There is no response body\", function () {",
+											"    var res = (_.isEmpty(responseBody));",
+											"    pm.expect(res).to.be.true",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "X-Requested-Id",
+										"value": "$(uuidgen)",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"content\": \"{{taskName}}\"\n}"
+								},
+								"url": {
+									"raw": "{{baseURL}}",
+									"host": [
+										"{{baseURL}}"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Get an active task",
+					"item": [
+						{
+							"name": "Get an active task",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "f7832bf9-dfe5-4e6e-92da-e31ca7de09e4",
+										"exec": [
+											"var jsonData = pm.response.json();",
+											"var name = pm.environment.get(\"taskName\")",
+											"var creator = parseInt(pm.environment.get(\"creator\"))",
+											"var schema = JSON.parse(pm.environment.get(\"taskSchema\"))",
+											"",
+											"pm.test(\"Task name is correct\", function(){",
+											"    pm.expect(jsonData.content).to.eql(name);",
+											"});",
+											"",
+											"pm.test(\"Validate Task Id\", function(){",
+											"    pm.expect(jsonData.id).to.be.eql(pm.environment.get(\"taskId\"))",
+											"});",
+											"",
+											"pm.test(\"Schema is valid\", function(){",
+											"    pm.response.to.have.jsonSchema(schema);",
+											"});",
+											"",
+											"pm.test(\"Body response to be Json\", function(){",
+											"    pm.response.to.be.json;",
+											"});",
+											"",
+											"pm.test(\"Response time is less than 600ms\", function () {",
+											"    pm.expect(pm.response.responseTime).to.be.below(600);",
+											"});",
+											"",
+											"pm.test(\"Content-Type is present\", function () {",
+											"    pm.response.to.have.header(\"Content-Type\");",
+											"});",
+											"",
+											"pm.test(\"Validate creator\", function(){",
+											"    pm.expect(jsonData.creator).to.be.eql(creator);",
+											"});",
+											"",
+											"pm.test(\"Validate creator be a number\", function(){",
+											"    pm.expect(jsonData.creator).to.be.a(\"number\");",
+											"});",
+											"",
+											"pm.test(\"Validate id be a number\", function(){",
+											"    pm.expect(jsonData.id).to.be.a(\"number\");",
+											"});",
+											"",
+											"pm.test(\"Validate content be a string\",function(){",
+											"    pm.expect(jsonData.content).to.be.a(\"string\");",
+											"});",
+											"",
+											"//Negative scenarios",
+											"pm.test(\"There is no response body\", function () {",
+											"    var res = (_.isEmpty(responseBody));",
+											"    pm.expect(res).to.be.true",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseURL}}/{{taskId}}",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"{{taskId}}"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Update task",
+					"item": [
+						{
+							"name": "Update task",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "cae35a4c-f9b1-42c2-b7c8-f36f8bf6592d",
+										"exec": [
+											"pm.test(\"Response time is less than 600ms\", function () {",
+											"    pm.expect(pm.response.responseTime).to.be.below(600);",
+											"});",
+											"",
+											"pm.test(\"There is no response body\", function () {",
+											"    var res = (_.isEmpty(responseBody));",
+											"    pm.expect(res).to.be.true",
+											"});",
+											"",
+											"//Negative scenarios",
+											"",
+											"pm.test(\"Body response to be Json\", function(){",
+											"    pm.response.to.be.json;",
+											"});",
+											"",
+											"pm.test(\"Content-Type is present\", function () {",
+											"    pm.response.to.have.header(\"Content-Type\");",
+											"});",
+											"",
+											"pm.test(\"Validate creator\", function(){",
+											"    pm.expect(jsonData.creator).to.be.eql(creator);",
+											"});",
+											"",
+											"pm.test(\"Validate creator be a number\", function(){",
+											"    pm.expect(jsonData.creator).to.be.a(\"number\");",
+											"});",
+											"",
+											"pm.test(\"Validate id be a number\", function(){",
+											"    pm.expect(jsonData.id).to.be.a(\"number\");",
+											"});",
+											"",
+											"pm.test(\"Validate content be a string\",function(){",
+											"    pm.expect(jsonData.content).to.be.a(\"string\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "X-Requested-Id",
+										"value": "$(uuidgen)",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"content\": \"{{updateTaskName}}\"\n}"
+								},
+								"url": {
+									"raw": "{{baseURL}}/{{taskId}}",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"{{taskId}}"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Change status",
+					"item": [
+						{
+							"name": "Close a task",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "c5f78480-9414-41c6-8470-a2b0a3e8e0b1",
+										"exec": [
+											"pm.test(\"Response time is less than 600ms\", function () {",
+											"    pm.expect(pm.response.responseTime).to.be.below(600);",
+											"});",
+											"",
+											"pm.test(\"There is no response body\", function () {",
+											"    var res = (_.isEmpty(responseBody));",
+											"    pm.expect(res).to.be.true",
+											"});",
+											"",
+											"//Negative scenarios",
+											"",
+											"pm.test(\"Body response to be Json\", function(){",
+											"    pm.response.to.be.json;",
+											"});",
+											"",
+											"pm.test(\"Content-Type is present\", function () {",
+											"    pm.response.to.have.header(\"Content-Type\");",
+											"});",
+											"",
+											"pm.test(\"Validate creator\", function(){",
+											"    pm.expect(jsonData.creator).to.be.eql(creator);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{baseURL}}/{{taskId}}/close",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"{{taskId}}",
+										"close"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Reopen task",
+					"item": [
+						{
+							"name": "Reopen a task",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "58ab6326-3877-4af6-8048-0f4a0fa55e66",
+										"exec": [
+											"pm.test(\"Response time is less than 600ms\", function () {",
+											"    pm.expect(pm.response.responseTime).to.be.below(600);",
+											"});",
+											"",
+											"pm.test(\"There is no response body\", function () {",
+											"    var res = (_.isEmpty(responseBody));",
+											"    pm.expect(res).to.be.true",
+											"});",
+											"",
+											"//Negative scenarios",
+											"",
+											"pm.test(\"Body response to be Json\", function(){",
+											"    pm.response.to.be.json;",
+											"});",
+											"",
+											"pm.test(\"Content-Type is present\", function () {",
+											"    pm.response.to.have.header(\"Content-Type\");",
+											"});",
+											"",
+											"pm.test(\"Validate creator\", function(){",
+											"    pm.expect(jsonData.creator).to.be.eql(creator);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{baseURL}}/{{taskId}}/reopen",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"{{taskId}}",
+										"reopen"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Delete task ",
+					"item": [
+						{
+							"name": "Delete task",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "1ce346a8-9240-42dc-b978-43fe399fc95a",
+										"exec": [
+											"pm.test(\"Response time is less than 600ms\", function () {",
+											"    pm.expect(pm.response.responseTime).to.be.below(600);",
+											"});",
+											"",
+											"pm.test(\"There is no response body\", function () {",
+											"    var res = (_.isEmpty(responseBody));",
+											"    pm.expect(res).to.be.true",
+											"});",
+											"",
+											"//Negative scenarios",
+											"",
+											"pm.test(\"Body response to be Json\", function(){",
+											"    pm.response.to.be.json;",
+											"});",
+											"",
+											"pm.test(\"Content-Type is present\", function () {",
+											"    pm.response.to.have.header(\"Content-Type\");",
+											"});",
+											"",
+											"pm.test(\"Validate creator\", function(){",
+											"    pm.expect(jsonData.creator).to.be.eql(creator);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseURL}}/{{taskId}}",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"{{taskId}}"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "affd2cb1a58b301b7fb57612eb92a4f514d4f2c6",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "2537c2d2-cd2e-412d-a0c6-3a4a8322c04b",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "2d359999-02fc-4453-93f2-492dc3cf15b4",
+				"type": "text/javascript",
+				"exec": [
+					"pm.test(\"Status code is 2xx\", function () {",
+					"    pm.response.to.be.success;",
+					"});"
+				]
+			}
+		}
+	],
+	"protocolProfileBehavior": {}
+}

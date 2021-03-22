@@ -1,0 +1,577 @@
+{
+	"id": "d6bba81b-1782-4de7-98b9-4fc227a6ee34",
+	"name": "Todoist",
+	"timestamp": "2021-03-22T15:35:37.142Z",
+	"collection_id": "b0bfdf5b-035f-45db-bcb1-653b759d3041",
+	"folder_id": 0,
+	"environment_id": "efb60b7a-3789-4d31-adca-4f9469d19a63",
+	"totalPass": 42,
+	"totalFail": 22,
+	"results": [
+		{
+			"id": "8d524a87-4efb-4932-8ca3-ea6cf519e098",
+			"name": "Get active tasks",
+			"url": "https://api.todoist.com/rest/v1/tasks",
+			"time": 477,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 2xx": true,
+				"Body response to be Json": true,
+				"Response time is less than 400ms": false,
+				"Content-Type is present": true,
+				"Validate text is present ": true,
+				"Validate creator": true,
+				"Validate creator be a number": true,
+				"Schema is valid": true,
+				"Task name is correct": false,
+				"There is no response body": false
+			},
+			"testPassFailCounts": {
+				"Status code is 2xx": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body response to be Json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is less than 400ms": {
+					"pass": 0,
+					"fail": 1
+				},
+				"Content-Type is present": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validate text is present ": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validate creator": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validate creator be a number": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Schema is valid": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Task name is correct": {
+					"pass": 0,
+					"fail": 1
+				},
+				"There is no response body": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				477
+			],
+			"allTests": [
+				{
+					"Status code is 2xx": true,
+					"Body response to be Json": true,
+					"Response time is less than 400ms": false,
+					"Content-Type is present": true,
+					"Validate text is present ": true,
+					"Validate creator": true,
+					"Validate creator be a number": true,
+					"Schema is valid": true,
+					"Task name is correct": false,
+					"There is no response body": false
+				}
+			]
+		},
+		{
+			"id": "a985e050-8cbe-41ea-aec1-e040c21ba252",
+			"name": "Create a new task",
+			"url": "https://api.todoist.com/rest/v1/tasks",
+			"time": 510,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 2xx": true,
+				"Task name is correct": true,
+				"Validate Task Id": true,
+				"Body response to be Json": true,
+				"Schema is valid": true,
+				"Response time is less than 600ms": true,
+				"Content-Type is present": true,
+				"Validate creator": true,
+				"Validate creator be a number": true,
+				"Validate project id": true,
+				"Validate id be a number": true,
+				"Validate content be a string": true,
+				"Label_ids array is empty": true,
+				"Validate text is present ": false,
+				"There is no response body": false
+			},
+			"testPassFailCounts": {
+				"Status code is 2xx": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Task name is correct": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validate Task Id": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body response to be Json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Schema is valid": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is less than 600ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type is present": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validate creator": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validate creator be a number": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validate project id": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validate id be a number": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validate content be a string": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Label_ids array is empty": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validate text is present ": {
+					"pass": 0,
+					"fail": 1
+				},
+				"There is no response body": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				510
+			],
+			"allTests": [
+				{
+					"Status code is 2xx": true,
+					"Task name is correct": true,
+					"Validate Task Id": true,
+					"Body response to be Json": true,
+					"Schema is valid": true,
+					"Response time is less than 600ms": true,
+					"Content-Type is present": true,
+					"Validate creator": true,
+					"Validate creator be a number": true,
+					"Validate project id": true,
+					"Validate id be a number": true,
+					"Validate content be a string": true,
+					"Label_ids array is empty": true,
+					"Validate text is present ": false,
+					"There is no response body": false
+				}
+			]
+		},
+		{
+			"id": "c3f45b04-d911-4c67-adf6-f51327ca12d5",
+			"name": "Get an active task",
+			"url": "https://api.todoist.com/rest/v1/tasks/4680557905",
+			"time": 222,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 2xx": true,
+				"Task name is correct": true,
+				"Validate Task Id": true,
+				"Schema is valid": true,
+				"Body response to be Json": true,
+				"Response time is less than 600ms": true,
+				"Content-Type is present": true,
+				"Validate creator": true,
+				"Validate creator be a number": true,
+				"Validate id be a number": true,
+				"Validate content be a string": true,
+				"There is no response body": false
+			},
+			"testPassFailCounts": {
+				"Status code is 2xx": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Task name is correct": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validate Task Id": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Schema is valid": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body response to be Json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is less than 600ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type is present": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validate creator": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validate creator be a number": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validate id be a number": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validate content be a string": {
+					"pass": 1,
+					"fail": 0
+				},
+				"There is no response body": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				222
+			],
+			"allTests": [
+				{
+					"Status code is 2xx": true,
+					"Task name is correct": true,
+					"Validate Task Id": true,
+					"Schema is valid": true,
+					"Body response to be Json": true,
+					"Response time is less than 600ms": true,
+					"Content-Type is present": true,
+					"Validate creator": true,
+					"Validate creator be a number": true,
+					"Validate id be a number": true,
+					"Validate content be a string": true,
+					"There is no response body": false
+				}
+			]
+		},
+		{
+			"id": "691daa8e-a40a-436a-b90e-e53f3991ff57",
+			"name": "Update task",
+			"url": "https://api.todoist.com/rest/v1/tasks/4680557905",
+			"time": 431,
+			"responseCode": {
+				"code": 204,
+				"name": "No Content"
+			},
+			"tests": {
+				"Status code is 2xx": true,
+				"Response time is less than 600ms": true,
+				"There is no response body": true,
+				"Body response to be Json": false,
+				"Content-Type is present": false,
+				"Validate creator": false,
+				"Validate creator be a number": false,
+				"Validate id be a number": false,
+				"Validate content be a string": false
+			},
+			"testPassFailCounts": {
+				"Status code is 2xx": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is less than 600ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"There is no response body": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body response to be Json": {
+					"pass": 0,
+					"fail": 1
+				},
+				"Content-Type is present": {
+					"pass": 0,
+					"fail": 1
+				},
+				"Validate creator": {
+					"pass": 0,
+					"fail": 1
+				},
+				"Validate creator be a number": {
+					"pass": 0,
+					"fail": 1
+				},
+				"Validate id be a number": {
+					"pass": 0,
+					"fail": 1
+				},
+				"Validate content be a string": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				431
+			],
+			"allTests": [
+				{
+					"Status code is 2xx": true,
+					"Response time is less than 600ms": true,
+					"There is no response body": true,
+					"Body response to be Json": false,
+					"Content-Type is present": false,
+					"Validate creator": false,
+					"Validate creator be a number": false,
+					"Validate id be a number": false,
+					"Validate content be a string": false
+				}
+			]
+		},
+		{
+			"id": "1b3c85b6-9a3d-47ce-ba10-ec67d6a896ac",
+			"name": "Close a task",
+			"url": "https://api.todoist.com/rest/v1/tasks/4680557905/close",
+			"time": 563,
+			"responseCode": {
+				"code": 204,
+				"name": "No Content"
+			},
+			"tests": {
+				"Status code is 2xx": true,
+				"Response time is less than 600ms": true,
+				"There is no response body": true,
+				"Body response to be Json": false,
+				"Content-Type is present": false,
+				"Validate creator": false
+			},
+			"testPassFailCounts": {
+				"Status code is 2xx": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is less than 600ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"There is no response body": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body response to be Json": {
+					"pass": 0,
+					"fail": 1
+				},
+				"Content-Type is present": {
+					"pass": 0,
+					"fail": 1
+				},
+				"Validate creator": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				563
+			],
+			"allTests": [
+				{
+					"Status code is 2xx": true,
+					"Response time is less than 600ms": true,
+					"There is no response body": true,
+					"Body response to be Json": false,
+					"Content-Type is present": false,
+					"Validate creator": false
+				}
+			]
+		},
+		{
+			"id": "35578a98-e31a-4009-bbbe-47719128155a",
+			"name": "Reopen a task",
+			"url": "https://api.todoist.com/rest/v1/tasks/4680557905/reopen",
+			"time": 675,
+			"responseCode": {
+				"code": 204,
+				"name": "No Content"
+			},
+			"tests": {
+				"Status code is 2xx": true,
+				"Response time is less than 600ms": false,
+				"There is no response body": true,
+				"Body response to be Json": false,
+				"Content-Type is present": false,
+				"Validate creator": false
+			},
+			"testPassFailCounts": {
+				"Status code is 2xx": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is less than 600ms": {
+					"pass": 0,
+					"fail": 1
+				},
+				"There is no response body": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body response to be Json": {
+					"pass": 0,
+					"fail": 1
+				},
+				"Content-Type is present": {
+					"pass": 0,
+					"fail": 1
+				},
+				"Validate creator": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				675
+			],
+			"allTests": [
+				{
+					"Status code is 2xx": true,
+					"Response time is less than 600ms": false,
+					"There is no response body": true,
+					"Body response to be Json": false,
+					"Content-Type is present": false,
+					"Validate creator": false
+				}
+			]
+		},
+		{
+			"id": "3cd1a31a-4dc8-45f2-b772-210cce480e7d",
+			"name": "Delete task",
+			"url": "https://api.todoist.com/rest/v1/tasks/4680557905",
+			"time": 446,
+			"responseCode": {
+				"code": 204,
+				"name": "No Content"
+			},
+			"tests": {
+				"Status code is 2xx": true,
+				"Response time is less than 600ms": true,
+				"There is no response body": true,
+				"Body response to be Json": false,
+				"Content-Type is present": false,
+				"Validate creator": false
+			},
+			"testPassFailCounts": {
+				"Status code is 2xx": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is less than 600ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"There is no response body": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body response to be Json": {
+					"pass": 0,
+					"fail": 1
+				},
+				"Content-Type is present": {
+					"pass": 0,
+					"fail": 1
+				},
+				"Validate creator": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				446
+			],
+			"allTests": [
+				{
+					"Status code is 2xx": true,
+					"Response time is less than 600ms": true,
+					"There is no response body": true,
+					"Body response to be Json": false,
+					"Content-Type is present": false,
+					"Validate creator": false
+				}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 3324,
+	"collection": {
+		"requests": [
+			{
+				"id": "8d524a87-4efb-4932-8ca3-ea6cf519e098",
+				"method": "GET"
+			},
+			{
+				"id": "a985e050-8cbe-41ea-aec1-e040c21ba252",
+				"method": "POST"
+			},
+			{
+				"id": "c3f45b04-d911-4c67-adf6-f51327ca12d5",
+				"method": "GET"
+			},
+			{
+				"id": "691daa8e-a40a-436a-b90e-e53f3991ff57",
+				"method": "POST"
+			},
+			{
+				"id": "1b3c85b6-9a3d-47ce-ba10-ec67d6a896ac",
+				"method": "POST"
+			},
+			{
+				"id": "35578a98-e31a-4009-bbbe-47719128155a",
+				"method": "POST"
+			},
+			{
+				"id": "3cd1a31a-4dc8-45f2-b772-210cce480e7d",
+				"method": "DELETE"
+			}
+		]
+	}
+}

@@ -1,0 +1,168 @@
+{
+	"id": "f330765e-8de8-470a-ac34-852735ca8355",
+	"name": "Todoist DDT",
+	"timestamp": "2021-03-22T16:41:35.743Z",
+	"collection_id": "ab847f6b-bc62-4b27-8b58-9368d60eacba",
+	"folder_id": 0,
+	"environment_id": "efb60b7a-3789-4d31-adca-4f9469d19a63",
+	"totalPass": 39,
+	"totalFail": 6,
+	"results": [
+		{
+			"id": "0417fd56-3de0-4987-bb30-4a280f98b4c7",
+			"name": "Create new tasks",
+			"time": 344,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 2xx": true,
+				"Task name is correct": true,
+				"Validate Task Id": true,
+				"Body response to be Json": true,
+				"Schema is valid": true,
+				"Response time is less than 600ms": true,
+				"Content-Type is present": true,
+				"Validate creator": true,
+				"Validate creator be a number": true,
+				"Validate project id": true,
+				"Validate id be a number": true,
+				"Validate content be a string": true,
+				"Label_ids array is empty": true,
+				"Validate text is present ": false,
+				"There is no response body": false
+			},
+			"testPassFailCounts": {
+				"Status code is 2xx": {
+					"pass": 3,
+					"fail": 0
+				},
+				"Task name is correct": {
+					"pass": 3,
+					"fail": 0
+				},
+				"Validate Task Id": {
+					"pass": 3,
+					"fail": 0
+				},
+				"Body response to be Json": {
+					"pass": 3,
+					"fail": 0
+				},
+				"Schema is valid": {
+					"pass": 3,
+					"fail": 0
+				},
+				"Response time is less than 600ms": {
+					"pass": 3,
+					"fail": 0
+				},
+				"Content-Type is present": {
+					"pass": 3,
+					"fail": 0
+				},
+				"Validate creator": {
+					"pass": 3,
+					"fail": 0
+				},
+				"Validate creator be a number": {
+					"pass": 3,
+					"fail": 0
+				},
+				"Validate project id": {
+					"pass": 3,
+					"fail": 0
+				},
+				"Validate id be a number": {
+					"pass": 3,
+					"fail": 0
+				},
+				"Validate content be a string": {
+					"pass": 3,
+					"fail": 0
+				},
+				"Label_ids array is empty": {
+					"pass": 3,
+					"fail": 0
+				},
+				"Validate text is present ": {
+					"pass": 0,
+					"fail": 3
+				},
+				"There is no response body": {
+					"pass": 0,
+					"fail": 3
+				}
+			},
+			"times": [
+				574,
+				522,
+				344
+			],
+			"allTests": [
+				{
+					"Status code is 2xx": true,
+					"Task name is correct": true,
+					"Validate Task Id": true,
+					"Body response to be Json": true,
+					"Schema is valid": true,
+					"Response time is less than 600ms": true,
+					"Content-Type is present": true,
+					"Validate creator": true,
+					"Validate creator be a number": true,
+					"Validate project id": true,
+					"Validate id be a number": true,
+					"Validate content be a string": true,
+					"Label_ids array is empty": true,
+					"Validate text is present ": false,
+					"There is no response body": false
+				},
+				{
+					"Status code is 2xx": true,
+					"Task name is correct": true,
+					"Validate Task Id": true,
+					"Body response to be Json": true,
+					"Schema is valid": true,
+					"Response time is less than 600ms": true,
+					"Content-Type is present": true,
+					"Validate creator": true,
+					"Validate creator be a number": true,
+					"Validate project id": true,
+					"Validate id be a number": true,
+					"Validate content be a string": true,
+					"Label_ids array is empty": true,
+					"Validate text is present ": false,
+					"There is no response body": false
+				},
+				{
+					"Status code is 2xx": true,
+					"Task name is correct": true,
+					"Validate Task Id": true,
+					"Body response to be Json": true,
+					"Schema is valid": true,
+					"Response time is less than 600ms": true,
+					"Content-Type is present": true,
+					"Validate creator": true,
+					"Validate creator be a number": true,
+					"Validate project id": true,
+					"Validate id be a number": true,
+					"Validate content be a string": true,
+					"Label_ids array is empty": true,
+					"Validate text is present ": false,
+					"There is no response body": false
+				}
+			]
+		}
+	],
+	"count": 3,
+	"totalTime": 1440,
+	"collection": {
+		"requests": [
+			{
+				"id": "0417fd56-3de0-4987-bb30-4a280f98b4c7",
+				"method": "POST"
+			}
+		]
+	}
+}

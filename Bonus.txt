@@ -1,0 +1,4 @@
+The code must be prepared to get API Keys from file and in a CI/CD must be overwrite the file .env with production credentials.
+
+For example in this project it is taking the variables from file /TODOIST/tests/backEnd/envVariables/QA_environment.json. 
+And with the CI/CD tool must be overwrite on the execution.

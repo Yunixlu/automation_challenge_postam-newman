@@ -1,0 +1,15 @@
+{
+  "name": "postaman-newman-challenge",
+  "version": "1.0.0",
+  "description": "Second challenge - Backend postman- newman automation",
+  "main": "index.js",
+  "scripts": {
+    "testAPI": "npx newman run './TODOIST/tests/backEnd/collection/Todoist_collection.json' -e './TODOIST/tests/backEnd/envVariables/QA_environment.json' -r htmlextra --reporter-htmlextra-export './TODOIST/tests/backEnd/reports/report.html'"
+  },
+  "author": "Yunuen Parra",
+  "license": "ISC",
+  "dependencies": {
+    "newman": "^5.2.2",
+    "newman-reporter-htmlextra": "^1.20.1"
+  }
+}
