@@ -3,31 +3,28 @@
 **Welcome**
 
 ### Structure 
-- **backEND**
-- Collection
+- **backEnd**
+- Collection: 
 The folder contains a file .json with the requests and tests
 
-- envVariables
+- envVariables: 
 The folder contains a file .json with the variables of QA environment 
 
-- DDT
+- DDT: 
 This folder contains the files the collection, environment and file .csv to run the request and create several tasks, also a file with the report of the execution.
 
-- Reports
+- Reports: 
 The folder contains the report.html that is automatically generated with Newman.
 Also a folder with the report of the tests without CLI generated from Postman
 
-- **frontEND**
-The folder is empty
-
-- **Bonus.txt**
+- **Bonus.txt:**
 The file contains the answer to point 1 on bonus section
 
 
 
 ### Run the project
 
-- Run all tests and create a report
+- Run all tests and create a report: 
 `$ npm run testAPI`
 
 
